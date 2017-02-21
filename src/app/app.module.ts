@@ -4,15 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { LocatorComponent } from './locator/locator.component';
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LocatorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBenPoA9xKEwHnwsVBF4vBRCf1uSEbPXyo'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

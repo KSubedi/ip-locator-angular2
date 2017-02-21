@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="well main-box margin-top">
+      <div class="text-center">
+        <h1>IP Locator</h1>
+        <hr>
+
+        <div class="alert alert-info text-center margin-top" *ngIf="ipData === undefined && hasFailed !== true">
+          Loading...
+        </div>
+
+        <div class="alert alert-danger text-center margin-top" *ngIf="hasFailed === true">
+          {{errorText}}
+        </div>
+        <div *ngIf="ipData !== undefined">
+
+          <h4><small>{{ipText}}</small></h4>
+          <a href="{{whoisUrl}}{{ipData.ip}}" target="_blank">
+            <h3>{{ipData.ip}}</h3>
+          </a>
+		  <sebm-google-map [latitude]="ipData.latitude" [longitude]="ipData.longitude">
+		  </sebm-google-map>	
+        </div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <h4><small>Search</small></h4>
+        <form (submit)="newSearch(ip.value)">
+          <input type="text" class="form-control input-sm input-centered" placeholder="IP Address / HostName" #ip>
+          <button type="submit" class="btn btn-xs btn-success btn-block">Search</button>
+        </form>
+      </div>
+      <div *ngIf="ipData !== undefined">
+        <hr>
+        <h4 class="text-center"><small>Other Information</small></h4>
+        <table class="table table-striped">
+          <tr>
+            <td><strong>City</strong></td>
+            <td>{{ipData.city}}</td>
+          </tr>
+          <tr>
+            <td><strong>Region</strong></td>
+            <td>{{ipData.region}}</td>
+          </tr>
+          <tr>
+            <td><strong>Country</strong></td>
+            <td>{{ipData.country}}</td>
+          </tr>
+          <tr>
+            <td><strong>Postal / Zip Code</strong></td>
+            <td>{{ipData.postal}}</td>
+          </tr>
+          <tr>
+            <td><strong>Continent</strong></td>
+            <td>{{ipData.continent}}</td>
+          </tr>
+          <tr>
+            <td><strong>HostName</strong></td>
+            <td *ngIf="ipData.hostname !== ''">{{ipData.hostname}}</td>
+            <td *ngIf="ipData.hostname === ''">N/A</td>
+          </tr>
+          <tr>
+            <td><strong>Coordinates</strong></td>
+            <td>{{ipData.latitude}}, {{ipData.longitude}}</td>
+          </tr>
+        </table>
+      </div>
+
+	  <hr>
+	  <div class="footer text-center">
+		&copy;2017 <a href="https://kaushalsubedi.com/">Kaushal Subedi</a>, All Rights Reserved!
+	  </div>
+    </div>
+  </div>
+</div>

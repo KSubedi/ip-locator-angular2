@@ -1,0 +1,21 @@
+.main-box{
+    /*background-color: #f2f2f2;*/
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.margin-top{
+    margin-top: 30px;
+}
+
+.input-centered{
+    text-align: center;
+}
+
+.background-white{
+    background-color: white;
+}
+
+.sebm-google-map-container {
+  height: 300px;
+}
